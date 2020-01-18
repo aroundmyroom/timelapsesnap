@@ -29,7 +29,10 @@ This example gets every 30 seconds 1 image
 `
 Explained:
 
-`* * * * * /bin/bash -c ' for i in {1..X}; do /home/snap/snap.sh savesnap "Voordeur" > /dev/null 2>&1 ; sleep Y ; done '`
+`
+* * * * * /bin/bash -c ' for i in {1..X}; do /home/snap/snap.sh savesnap "Voordeur" > /dev/null 2>&1 ; sleep Y ; done '
+`
+
 
 If you want to run every N seconds then X will be 60/N and Y will be N.
 
