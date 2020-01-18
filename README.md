@@ -7,6 +7,7 @@ Unifi G3 (Flex) camera with public snap.jpeg option (to be set in the camera) (n
 FFMPEG
 Some scripting skills (i have little, so it must be do-able)
 
+
 License should be considered Public Domain as it is derived from above github source ;)
 
 I have renamed the script snap.sh
