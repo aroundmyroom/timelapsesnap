@@ -2,10 +2,13 @@
 
 SNAP_BASE="/home/snap"
 OUT_DIR="$SNAP_BASE/timelapse"
+
+#added %S to support saving images <1 minute
+
 DATE_EXT=`date '+%F %H:%M:%S'`
+
 #add here the framerate of the video
 FRAMERATE=25
-
 
 declare -A CAMS
 
@@ -106,10 +109,8 @@ createMovie()
   createDir "$OUT_DIR"
   outfile="$OUT_DIR/$1 - $DATE_EXT.mp4"
 
-#   ffmpeg -r 15 -start_number 1 -i "$snapTemp/"%06d.jpg -c:v libx264 -preset slow -crf 18 -c:a copy -pix_fmt yuv420p "$outfile" -hide_banner -loglevel panic
-##    ffmpeg -r "$FRAMERATE" -start_number 1 -i "$snapTemp/"%06d.jpg -c:v libx264 -s hd1080 -preset slow -crf 18 -c:a copy -pix_fmt yuv420p "$outfile" -hide_banner -loglevel panic
+# create with framerate supplied, gives MP4 
 ffmpeg -r "$FRAMERATE" -start_number 1 -i "$snapTemp/"%06d.jpg -c:v libx264 -s hd1080 -preset slow -crf 18 -c:a copy -pix_fmt yuv420p "$outfile" -hide_banner -loglevel panic -pattern_type glob
-#   ffmpeg -r 24 -start_number 1 -i "$snapTemp/"%06d.jpg -i -s hd1080 -vcodec libx264 -c:v copy -pix_fmt yuv420p "$outfile" -hide_banner -loglevel panic
 
 
   log "Created $outfile"
