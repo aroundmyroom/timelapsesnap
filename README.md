@@ -24,15 +24,16 @@ It depends what kind of timelapse you want, this script is optimized to get ever
 capturing clouds during 1 or 2 days. 
 
 This example gets every 30 seconds 1 image
+
 `
 * * * * * /bin/bash -c ' for i in {1..2}; do /home/snap/snap.sh savesnap "Voordeur" > /dev/null 2>&1 ; sleep 30 ; done '
 `
+
 Explained:
 
 `
 * * * * * /bin/bash -c ' for i in {1..X}; do /home/snap/snap.sh savesnap "Voordeur" > /dev/null 2>&1 ; sleep Y ; done '
 `
-
 
 If you want to run every N seconds then X will be 60/N and Y will be N.
 
