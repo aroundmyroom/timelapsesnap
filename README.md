@@ -1,17 +1,22 @@
-# timelapsesnap
+# Timelapsesnap
 Create Timelapse from Unifi G3 (flex) Camera through snap.jpeg
 derived from: https://github.com/sfeakes/UniFi-Timelapse
 
-License should be considered Public Domain ;)
+Needs:
+Unifi G3 (Flex) camera with public snap.jpeg option (to be set in the camera) (no username/password)
+FFMPEG
+Some scripting skills (i have little, so it must be do-able)
+
+License should be considered Public Domain as it is derived from above github source ;)
 
 I have renamed the script snap.sh
 
 ie
 /home/snap/snap.sh savesnap "Voordeur"
 
-The option should save a still image to the directry listed in the SNAP_BASE variable. 
-If it woked setup a cron job to execute that script every time you want to save an image.
-This example is crontab to save an image every minute
+The above option should save a still image to the directry listed in the SNAP_BASE variable. 
+
+This example in crontab is to save an image every minute
 
 `*/1 * * * * /path/to/script/snap.sh savesnap "Voordeur" "Achterdeur"`
 
