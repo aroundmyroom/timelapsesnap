@@ -13,7 +13,9 @@ The option should save a still image to the directry listed in the SNAP_BASE var
 If it woked setup a cron job to execute that script every time you want to save an image.
 This example is crontab to save an image every minute
 
+`
 */1 * * * * /path/to/script/snap.sh savesnap "Voordeur" "Achterdeur"
+`
 
 ./snap.sh createvideo "defined Camera name" today
 That will create a time-lapse of all todays images. Options are today yesterday all file hopefully that’s self explanatory.
