@@ -110,7 +110,7 @@ createMovie()
   outfile="$OUT_DIR/$1 - $DATE_EXT.mp4"
 
 # create with framerate supplied, gives MP4 
-ffmpeg -r "$FRAMERATE" -start_number 1 -i "$snapTemp/"%06d.jpg -c:v libx264 -s hd1080 -preset slow -crf 18 -c:a copy -pix_fmt yuv420p "$outfile" -hide_banner -loglevel panic -pattern_type glob
+ffmpeg -r "$FRAMERATE" -start_number 1 -i "$snapTemp/"%06d.jpg -c:v libx264 -s hd1080 -preset slow -crf 18 -c:a copy -pix_fmt yuv420p "$outfile" -hide_banner -loglevel panic -stats
 
 
   log "Created $outfile"
