@@ -1,0 +1,9 @@
+If you want to have FFMPEG with music do the following
+
+all on 1 line (remove //)
+
+ffmpeg -fflags discardcorrupt -r "$FRAMERATE" -start_number 1 -i "$snapTemp/"%06d.jpg -i /home/snap/audio.mp3 -map 0:v:0 -map 1:a:0 //
+-c:v libx264 -s hd1080 -preset slow -shortest -crf 18 -c:a copy -pix_fmt yuv420p "$outfile" -hide_banner
+-loglevel panic -stats
+
+put an MP3 file in /home/snap (or location you desire), make sure that the mapping -map is correct, above is working for me
