@@ -2,7 +2,7 @@
 Create Timelapse from Unifi G3 (flex) Camera through snap.jpeg
 derived from: https://github.com/sfeakes/UniFi-Timelapse
 
-A daily timelapse is uploaded by my to youtube (automatically) after this script has made the timelapse
+A daily timelapse is uploaded by my to youtube channel (automatically) after this script has made the timelapse
 see it here: https://www.youtube.com/playlist?list=PLYUJ8dQSre0TeUd91iiCcnz17_Y1kDmBQ
 
 Needs:
