@@ -24,9 +24,16 @@ in the file .youtube-upload-credentials.json
 cp * /media/timelapse/timelapse/
 
 rm *
+
 for f in /media/timelapse/timelapse/*.mp4; do /usr/bin/python3.7 /home/snap/youtube-upload/bin/youtube-upload --title="title here $NOW" "$f" --playlist="Timelapse" --description="extra info";done
+
 cd /media/timelapse/timelapse
+
 cp * /media/timelapse/timelapse-backup
+
 rm *
+
 cd $SNAP_BASE/Voordeur
+
 find /home/snap/Voordeur -type f -name '*.jpg' -daystart -mtime +1 -exec rm {} \;
+
