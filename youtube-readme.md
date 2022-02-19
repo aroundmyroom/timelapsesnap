@@ -5,7 +5,7 @@ find . -maxdepth 1 -type f -size 0 -delete
 cd $SNAP_BASE
 /home/snap/snap.sh createvideo "Voordeur" yesterday
 cd /home/snap/timelapse/
-// comment
+// comment.
 touch test.txt
 copy files from location to another mount location for other purposes like youtube video
 for youtube I use the linux youtube-upload shell software. PS you need to enable and use the correct 'keys
