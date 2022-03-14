@@ -1,3 +1,7 @@
+Create live stream from Ubiquity UNIFI Cameras to Youtube or a Timelapse to Youtube
+
+For livestream see the stream.sh bash shell script
+
 # Timelapsesnap
 Create Timelapse from Unifi G3 (flex) Camera through snap.jpeg
 derived from: https://github.com/sfeakes/UniFi-Timelapse
