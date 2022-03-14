@@ -1,6 +1,7 @@
 # this bash script was found on the Internet and changed to fit my needs on a Raspberry Pi 2B with a Unifi G3 Camera to live stream to Youtube
 # it needed some small changes to keep running after a stream error and if there is a 'crash' can heal itself by restarting itself
 # I do run this script in 'screen' to have control over it.
+# do not forget to make this file executable ie. chmod 755 stream.sh ;)
 
 for (( ; ; ))
 do
