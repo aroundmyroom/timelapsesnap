@@ -11,7 +11,7 @@ do
 STREAM_KEY="enter here your stream key from studio.youtube.com" # YouTube Stream Key
 
 # enter here the RTSP source from the Protect application
-RTSP_SOURCE="rtsps://[ip-address & URL from the camera"
+RTSP_SOURCE="rtsps://[ip-address & URL from the camera]"
 YOUTUBE_URL="rtmp://a.rtmp.youtube.com/live2" # Base YouTube RTMP URL
 VBR="5200k" # Bitrate
 USE_TCP=1 # Use TCP transport for RTSP, otherwise UDP
