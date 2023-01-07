@@ -11,6 +11,8 @@ see it here: https://www.youtube.com/playlist?list=PLYUJ8dQSre0TeUd91iiCcnz17_Y1
 
 Needs:
 Unifi G3 (Flex) camera with public snap.jpeg option (to be set in the camera) (no username/password)
+Extra info: the snap.jpeg cannot be set in Protect, but only in the UI of the camera. so Login to the camera with username ubnt and your password
+
 FFMPEG
 Some scripting skills (i have little, so it must be do-able)
 
