@@ -2,28 +2,24 @@
 
 SNAP_BASE="/home/snap"
 OUT_DIR="$SNAP_BASE/timelapse"
-
-#added %S to support saving images <1 minute
-
-DATE_EXT=`date '+%F %H:%M:%S'`
-
-#add here the framerate of the video
-FRAMERATE=25
+DATE_EXT=`date '+%F %H_%M_%S'`
+FRAMERATE=30
+# new items for ffmpeg due to not using anonymous snap.jpeg anymore #
+rtspTransport="tcp"
+frameRate="1"
+vsync="1"
+duration="1"
+quality="1"
 
 declare -A CAMS
 
-CAMS["Voordeur"]="http://10.1.1.244/snap.jpeg"
+CAMS["Voordeur"]="rtsps://url-of-controller:7441/[check-in-Protect-and-replace-this]?enableSrtp"
+CAMS["SlowTimeLapse"]="rtsps://url-of-controller:7441/[check-in-Protect-and-replace-this]?enableSrtp"
 
-# if you use other CAMS add them here
-#CAMS["Back Door"]="http://192.1.1.2/snap.jpeg"
-#CAMS["Driveway"]="http://192.1.1.3/snap.jpeg"
-#CAMS["Back Garden"]="http://192.1.1.4/snap.jpeg"
-
-# Seems that the verbose option does not work in the Debian Shell I'm using
-# If we are in a terminal, be verbose.
-# if [[ -z $VERBOSE && -t 1 ]]; then
+#If we are in a terminal, be verbose.
+ if [[ -z $VERBOSE && -t 1 ]]; then
   VERBOSE=1
-# fi
+ fi
 
 log()
 {
@@ -43,20 +39,31 @@ createDir()
   fi  
 }
 
+
 getSnap() {
-
-  snapDir="$SNAP_BASE/$1"
-  if [ ! -d "$snapDir" ]; then
-    mkdir -p "$snapDir"
-    # check error here
-  fi
+  camName="$1"
+  camURL="${CAMS[$camName]}"
   
-  snapFile="$snapDir/$1 - $DATE_EXT.jpg"
+  snapDir="$SNAP_BASE/$camName"
+  createDir "$snapDir"
+  
+  snapFile="$snapDir/$camName - $DATE_EXT.jpg"
 
-  log savingSnap "$2" to "$snapFile" 
+  log "Saving snapshot from '$camName' to '$snapFile'"
 
-  wget --quiet -O "$snapFile" "$2"
+# the new camera's like the Unifi G5 Turret has low resolution SNAP.JPEG, you need to use FFMPEG to get higher resolution images
+
+ ffmpeg -i "$camURL" \
+         -rtsp_transport "$rtspTransport" \
+         -r "$frameRate" \
+         -vsync "$vsync" \
+         -t "$duration" \
+         -qscale:v "$quality" \
+         "$snapFile" 
+
 }
+
+
 
 createMovie()
 {
@@ -109,8 +116,12 @@ createMovie()
   createDir "$OUT_DIR"
   outfile="$OUT_DIR/$1 - $DATE_EXT.mp4"
 
-# create with framerate supplied, gives MP4 
-ffmpeg -r "$FRAMERATE" -start_number 1 -i "$snapTemp/"%06d.jpg -c:v libx264 -s hd1080 -preset slow -crf 18 -c:a copy -pix_fmt yuv420p "$outfile" -hide_banner -loglevel panic -stats
+  log "Starting ffmpeg"
+
+#make sure you have a mp3 file long enough based on all your images. If your music file is too short, the timelapse will be short
+#music not included in source
+
+ffmpeg -fflags discardcorrupt -r "$FRAMERATE" -start_number 1 -i "$snapTemp/"%06d.jpg -i /home/snap/timelapse2024.mp3 -map 0:v:0 -map 1:a:0 -c:v libx264 -s hd1080 -preset slow -shortest -crf 18 -c:a copy -pix_fmt yuv420p "$outfile" -hide_banner -loglevel panic -stats
 
 
   log "Created $outfile"
