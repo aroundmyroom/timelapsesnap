@@ -1,5 +1,13 @@
-Create live stream from Ubiquity UNIFI Cameras to Youtube or a Timelapse to Youtube
+Update 23-04-2024: [dd-mm-yyyy]
+I bought a Unifi G5 Turret Ultra and upon installation I saw that the export of the snap.jpeg was having a low resolution image (640x480)
+as I cannot use that I found a solution by getting the image from the RTSP stream available from Protect through the controller.
+I had to modify the snap.sh script and after some testing .. the new snap.sh was created.
 
+The code is probably rubbish and badly written, but hey it works for me over 5 years now ;)
+
+older notes:
+
+Create live stream from Ubiquity UNIFI Cameras to Youtube or a Timelapse to Youtube
 For livestream see the stream.sh bash shell script
 
 # Timelapsesnap
@@ -10,12 +18,15 @@ A daily timelapse is uploaded by my to youtube channel (automatically) after thi
 see it here: https://www.youtube.com/playlist?list=PLYUJ8dQSre0TeUd91iiCcnz17_Y1kDmBQ
 
 Needs:
+snap.jpeg has been replaced, so you now need to use the RTSP link provided by Protect.
+
+Obsolete with this newer snap.sh:
 Unifi G3 (Flex) camera with public snap.jpeg option (to be set in the camera) (no username/password)
 Extra info: the snap.jpeg cannot be set in Protect, but only in the UI of the camera. so Login to the camera with username ubnt and your password
 
+
 FFMPEG
 Some scripting skills (i have little, so it must be do-able)
-
 
 License should be considered Public Domain as it is derived from above github source ;)
 
