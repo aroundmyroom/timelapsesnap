@@ -1,3 +1,10 @@
+update 10-03-2025:  [dd-mm-yyyy]
+After a firmware aka controller update the http link is permanently moved to https with an 302 message.
+as WGET is following this it will complain about the certificate, which is not there / not valid etc.. 
+so wget --quiet --no-check-certificate -O "$snapFile" "$2" is now in place.
+With this I have valid JPEGS again and my timelapses do work again (unfortunately missing 10 days of timelapses)
+
+
 Update 23-04-2024: [dd-mm-yyyy]
 I bought a Unifi G5 Turret Ultra and upon installation I saw that the export of the snap.jpeg was having a low resolution image (640x480)
 as I cannot use that I found a solution by getting the image from the RTSP stream available from Protect through the controller.
